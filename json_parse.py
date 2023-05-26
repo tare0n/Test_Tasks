@@ -3,17 +3,28 @@ import io
 
 
 def from_json_to_dicts(file):
+    """
+    opens json-file
+    :param file: .json file
+    :return: list of dicts
+    """
     with io.open(file, encoding='utf-8') as f:
         dicts = json.load(f)
     return dicts
 
 
 def date_to_normal(date_str):
+    """
+    converts data to format DD.MM.YYYY
+    :param date_str:
+    :return:
+    """
     dates_list = date_str[:10].split('-')
     return '.'.join(dates_list[::-1])
 
 
 def encryption(payment_info):
+    """encrypts cards and bank account numbers"""
     if payment_info[:4] == "Счет":
         return "Cчет **" + payment_info[-4:]
     else:
